@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kito Mascot - Interactive Frontend Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body class="theme-dark">
+
+  <!-- Background decorative glows -->
+  <div class="bg-blur bg-blur-1"></div>
+  <div class="bg-blur bg-blur-2"></div>
+  <div class="bg-blur bg-blur-3"></div>
+
+  <!-- Top Navigation Header -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <span class="logo-icon">✨</span>
+        <span class="logo-text">Kito<span class="highlight">Mascot</span></span>
+      </div>
+      <nav class="nav-links">
+        <a href="#hero" class="nav-item active">Trang Chủ</a>
+        <a href="#features" class="nav-item">Tính Năng</a>
+        <a href="#rail-demo" class="nav-item">Thanh Trượt Mascot</a>
+        <a href="#interactive-zone" class="nav-item">Tương Tác</a>
+        <a href="/demo-embed.html" class="nav-item highlight" style="color: #a855f7; font-weight: 700;">📦 Nhúng Web Khác (SDK)</a>
+      </nav>
+      <div class="nav-actions">
+        <div class="mode-pill-selector" title="Chuyển chế độ hoạt động Mascot">
+          <button id="btn-quick-free" class="pill-btn active" title="Tự Do Di Chuyển">🕊️ Tự Do</button>
+          <button id="btn-quick-rail" class="pill-btn" title="Bám Thanh Trượt">🎢 Scroll</button>
+          <button id="btn-quick-float" class="pill-btn" title="Góc Màn Hình">📍 Góc</button>
+        </div>
+        <button id="btn-sound-toggle" class="icon-btn" title="Bật/Tắt Âm Thanh" aria-label="Toggle Sound">
+          <span class="sound-icon">🔊</span>
+        </button>
+        <button id="btn-theme-toggle" class="icon-btn hint-target" data-hint="Bấm vào đây để đổi giao diện Sáng / Tối siêu đẹp nè!" title="Đổi Giao Diện">
+          <span class="theme-icon">🌙</span>
+        </button>
+        <button id="btn-start-tour" class="btn btn-primary hint-target" data-hint="Click để Kito dẫn bạn đi tham quan 1 vòng nhé!">
+          🚀 Tour Hướng Dẫn
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Side Scroll Rail with Swinging Mascot Track -->
+  <aside id="scroll-rail" class="scroll-rail-container">
+    <div class="scroll-rail-track">
+      <div class="scroll-rail-line"></div>
+      <div id="rail-car" class="scroll-rail-car">
+        <div class="rope-connector">
+          <div class="rope-line"></div>
+          <div class="rope-ring"></div>
+        </div>
+        
+        <!-- Mascot Mount Point on Scroll Rail -->
+        <div id="mascot-rail-wrapper" class="mascot-wrapper rail-mode">
+          <!-- Mascot SVG & Speech Bubble rendered dynamically -->
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Showcase Content -->
+  <main class="content-wrapper">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+      <div class="hero-content">
+        <div class="badge">
+          <span class="badge-dot"></span> Interactive AI Companion
+        </div>
+        <h1 class="hero-title">
+          Tương Tác Giao Diện Với <br/>
+          <span class="gradient-text">Mascot Siêu Đáng Yêu</span>
+        </h1>
+        <p class="hero-subtitle">
+          Khám phá trải nghiệm người dùng hoàn toàn mới! Mascot <strong>Kito</strong> biết dõi mắt theo con trỏ chuột, 
+          đu người theo thanh trượt khi bạn cuộn trang, và thông minh gợi ý các nút bấm quan trọng.
+        </p>
+
+        <div class="hero-actions">
+          <button id="btn-hero-explore" class="btn btn-gradient btn-lg hint-target" data-hint="Bấm vào đây để xem hiệu ứng Mascot đu thanh trượt siêu mượt!">
+            ✨ Khám Phá Ngay
+          </button>
+          <button id="btn-mode-toggle" class="btn btn-glass btn-lg hint-target" data-hint="Chuyển đổi Mascot giữa Thanh Trượt và Chế độ Bám Góc Màn Hình!">
+            📍 Đổi Chế Độ Mascot
+          </button>
+          <button id="btn-quest-demo" class="btn btn-outline btn-lg hint-target" data-hint="Nhận danh sách thử thách tương tác với Mascot!">
+            🏆 Nhiệm Vụ Mascot
+          </button>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-card">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">mượt mà CSS & JS Physics</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">6+</span>
+            <span class="stat-label">Biểu cảm Mascot sống động</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">Interactive</span>
+            <span class="stat-label">Gợi ý Click & Auto Tour</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scroll Rail Demo Showcase -->
+    <section id="rail-demo" class="section-container">
+      <div class="section-header">
+        <h2 class="section-title">🎢 Hiệu Ứng Đu Thanh Trượt (Scroll Rail Swing)</h2>
+        <p class="section-subtitle">Thử kéo con lăn chuột lên xuống thật nhanh để xem Kito đung đưa nhé!</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card glass-card">
+          <div class="card-icon">⚡</div>
+          <h3>Đu Đung Đưa Theo Lực Kéo</h3>
+          <p>Khi bạn cuộn xuống, Mascot nghiêng người bám vào dây trượt với góc nghiêng tỉ lệ thuận với tốc độ scroll. Khi dừng cuộn, Mascot nảy nhẹ về vị trí cân bằng nhờ hiệu ứng Spring Dynamics.</p>
+        </div>
+        <div class="card glass-card">
+          <div class="card-icon">👀</div>
+          <h3>Theo Dõi Ánh Mắt Realtime</h3>
+          <p>Đôi mắt của Mascot luôn linh hoạt xoay và dõi theo vị trí con trỏ chuột của bạn trên khắp màn hình web.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Features Section -->
+    <section id="features" class="section-container">
+      <div class="section-header">
+        <h2 class="section-title">💡 Tính Năng Tương Tác Nổi Bật</h2>
+        <p class="section-subtitle">Chạm vào Mascot hoặc chọn các hành động dưới đây</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="feature-box">
+          <div class="feature-img-wrapper">
+            <div class="feature-badge">Gợi ý thông minh</div>
+            <div class="feature-icon-big">🎯</div>
+          </div>
+          <h3>Gợi Ý Click Button</h3>
+          <p>Mascot xuất hiện bong bóng thoại và tia sáng chiếu đến nút gợi ý, giúp tăng tỉ lệ chuyển đổi (CTR) và hướng dẫn người dùng.</p>
+          <button id="btn-trigger-hint" class="btn btn-sm btn-secondary hint-target" data-hint="Click để Mascot gợi ý 1 button ngẫu nhiên!">
+            👉 Thử Gợi Ý Ngẫu Nhiên
+          </button>
+        </div>
+
+        <div class="feature-box">
+          <div class="feature-img-wrapper">
+            <div class="feature-badge">Tự động dẫn đường</div>
+            <div class="feature-icon-big">🗺️</div>
+          </div>
+          <h3>Tour Hướng Dẫn Tương Tác</h3>
+          <p>Mascot di chuyển qua từng phần của trang web, bật hiệu ứng rọi sáng (Spotlight) và giải thích từng tính năng.</p>
+          <button id="btn-tour-step" class="btn btn-sm btn-secondary hint-target" data-hint="Click để khởi chạy Tour Hướng Dẫn từng bước!">
+            🚀 Chạy Tour Ngay
+          </button>
+        </div>
+
+        <div class="feature-box">
+          <div class="feature-img-wrapper">
+            <div class="feature-badge">Cá nhân hóa</div>
+            <div class="feature-icon-big">🎨</div>
+          </div>
+          <h3>Tùy Chỉnh Mascot</h3>
+          <p>Thay đổi màu sắc, biểu cảm (Vui, Ngạc nhiên, Suy nghĩ, Đu trượt) và phụ kiện cho Mascot Kito.</p>
+          <button id="btn-open-customizer" class="btn btn-sm btn-secondary hint-target" data-hint="Bấm vào đây để mở Bảng Đổi Trang Phục Mascot!">
+            ⚙️ Mở Bảng Customizer
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Testing Playground Zone -->
+    <section id="interactive-zone" class="section-container">
+      <div class="playground-card glass-card">
+        <div class="playground-header">
+          <h2>🎮 Khu Vực Thử Nghiệm Tương Tác</h2>
+          <p>Bấm thử các nút dưới đây để kích hoạt các phản ứng khác nhau của Mascot Kito</p>
+        </div>
+
+        <div class="playground-buttons">
+          <button id="btn-action-happy" class="btn btn-action hint-target" data-hint="Kích hoạt biểu cảm Kito cực kỳ vui mừng!">
+            🥳 Vui Vẻ (^.^)
+          </button>
+          <button id="btn-action-surprised" class="btn btn-action hint-target" data-hint="Kích hoạt biểu cảm Kito giật mình ngạc nhiên!">
+            😲 Ngạc Nhiên (O_O)
+          </button>
+          <button id="btn-action-pointing" class="btn btn-action hint-target" data-hint="Kito giơ tay chỉ trỏ nút bí mật!">
+            👉 Chỉ Trỏ
+          </button>
+          <button id="btn-action-sleepy" class="btn btn-action hint-target" data-hint="Cho Kito đi ngủ chút xíu...">
+            😴 Đi Ngủ (Zzz)
+          </button>
+          <button id="btn-surprise" class="btn btn-surprise hint-target" data-hint="Nút Bí Mật: Click để bắn pháo hoa tung tóe!">
+            🎁 Nút Bất Ngờ!
+          </button>
+        </div>
+
+        <!-- Mascot Quest Checklist Box -->
+        <div class="quest-box">
+          <h3>📋 Nhiệm Vụ Tương Tác Mascot:</h3>
+          <ul class="quest-list">
+            <li id="quest-1" class="quest-item"><span class="checkbox"></span> Thử kéo scroll xuống dưới để xem Mascot đu thanh trượt</li>
+            <li id="quest-2" class="quest-item"><span class="checkbox"></span> Click trực tiếp vào Mascot để vuốt ve & nghe âm thanh</li>
+            <li id="quest-3" class="quest-item"><span class="checkbox"></span> Đổi giao diện Sáng / Tối (Theme Toggle)</li>
+            <li id="quest-4" class="quest-item"><span class="checkbox"></span> Nhấn "Nút Bất Ngờ!" để xem pháo hoa</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Spacer & Content to ensure smooth long scroll -->
+    <section class="section-container long-content">
+      <div class="card glass-card text-center">
+        <h3>🎉 Bạn đã cuộn đến cuối trang!</h3>
+        <p>Mascot Kito đã trượt theo bạn suốt hành trình scroll. Hãy thử cuộn ngược lên trên nào!</p>
+        <button id="btn-back-top" class="btn btn-primary hint-target" data-hint="Click để Mascot đưa bạn vèo một cái lên đầu trang!">
+          ⬆️ Cuộn Lên Đầu Trang
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Mascot Customizer Modal / Drawer -->
+  <div id="customizer-modal" class="modal-backdrop">
+    <div class="modal-content glass-card">
+      <div class="modal-header">
+        <h3>🎨 Tùy Chỉnh Mascot Kito</h3>
+        <button id="btn-close-modal" class="close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="option-group">
+          <label>Màu Thân Mascot:</label>
+          <div class="color-options">
+            <button class="color-btn active" data-color="#6366f1" style="background: #6366f1;"></button>
+            <button class="color-btn" data-color="#ec4899" style="background: #ec4899;"></button>
+            <button class="color-btn" data-color="#10b981" style="background: #10b981;"></button>
+            <button class="color-btn" data-color="#f59e0b" style="background: #f59e0b;"></button>
+            <button class="color-btn" data-color="#06b6d4" style="background: #06b6d4;"></button>
+          </div>
+        </div>
+
+        <div class="option-group">
+          <label>Phụ Kiện:</label>
+          <div class="btn-group">
+            <button class="btn btn-sm acc-btn active" data-acc="none">Không</button>
+            <button class="btn btn-sm acc-btn" data-acc="glasses">👓 Kính Ngầu</button>
+            <button class="btn btn-sm acc-btn" data-acc="hat">🎩 Nón Kỳ Lân</button>
+            <button class="btn btn-sm acc-btn" data-acc="bowtie">🎀 Nơ Cổ</button>
+          </div>
+        </div>
+
+        <div class="option-group">
+          <label>Vị Trí & Chế Độ Mascot:</label>
+          <div class="btn-group">
+            <button class="btn btn-sm mode-btn active" data-mode="rail">🎢 Bám Thanh Trượt</button>
+            <button class="btn btn-sm mode-btn" data-mode="free">🕊️ Tự Do Di Chuyển</button>
+            <button class="btn btn-sm mode-btn" data-mode="float">📍 Nổi Góc Dưới Phải</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audio elements & Canvas for effects -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
